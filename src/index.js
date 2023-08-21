@@ -1,6 +1,6 @@
 import { projectCreate, createTask } from "./createNew.js";
 import { display,updateMenu } from "./displayProject.js";
-import { displayTaskPrompt, closeTaskPrompt, close ,closeProjectPrompt,displayProjectPrompt} from "./prompt.js";
+import { displayTaskPrompt, closeTaskPrompt, closeTaskIcon,closeProjectIcon ,closeProjectPrompt,displayProjectPrompt} from "./prompt.js";
 import { taskData, projectData} from "./retrieveData.js";
 
 const switchBtn = document.querySelector('.switch');
@@ -23,15 +23,16 @@ const addTaskBtn = document.getElementById('addTaskBtn');
 addTaskBtn.addEventListener('click', () => {
     displayTaskPrompt();
 });
-close.addEventListener('click', () => {
+closeTaskIcon.addEventListener('click', () => {
     taskData(projects[0],all)
     closeTaskPrompt();
 });
 
+
 addedProjectsBtn.addEventListener('click', () => {
     displayProjectPrompt();
 });
-close.addEventListener('click', () => {
+closeProjectIcon.addEventListener('click', () => {
     closeProjectPrompt();
 });
 

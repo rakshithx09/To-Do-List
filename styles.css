@@ -227,7 +227,7 @@
     height: 25px;
     cursor: pointer;
   }
-  #crossIcon{
+  .close{
     position: absolute;
     top: 1rem;
     right: 1.5rem;

@@ -1,5 +1,6 @@
 const taskPrompt = document.getElementById('taskPrompt');
-const close = document.getElementById('crossIcon');
+const closeTaskIcon = document.getElementById('crossIconTask');
+const closeProjectIcon = document.getElementById('crossIconProject');
 function displayTaskPrompt(){
     taskPrompt.style.display = "flex";
 }
@@ -12,4 +13,4 @@ function displayProjectPrompt(){
 function closeProjectPrompt(){
     projectPrompt.style.display = "none";
 }
-export {displayTaskPrompt,closeTaskPrompt,close, displayProjectPrompt,closeProjectPrompt};
+export {displayTaskPrompt,closeTaskPrompt,closeTaskIcon,closeProjectIcon, displayProjectPrompt,closeProjectPrompt};
