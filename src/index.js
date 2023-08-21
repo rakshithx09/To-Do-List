@@ -17,10 +17,16 @@ toggle.addEventListener('click', () => {
 const content = document.querySelector('.content');
 const allProjectsBtn = document.querySelector('.all');
 const addedProjectsBtn = document.querySelector('.addProject');
-const projectSection = document.querySelector('.projects');
+const addTaskBtn = document.getElementById('addTaskBtn');
 
 
-
+addTaskBtn.addEventListener('click', () => {
+    displayTaskPrompt();
+});
+close.addEventListener('click', () => {
+    taskData(projects[0],all)
+    closeTaskPrompt();
+});
 
 addedProjectsBtn.addEventListener('click', () => {
     displayProjectPrompt();
@@ -35,7 +41,7 @@ const submit = document.getElementById('submit');
 const submitProject = document.getElementById('submitProject');
 
 submit.addEventListener('click', () => {
-    taskData(webDev, all); //retrieves data from prompt pushes to respective projects
+    taskData(projects[0], all); //retrieves data from prompt pushes to respective projects
     closeTaskPrompt();
     display(currentProject);
 });
