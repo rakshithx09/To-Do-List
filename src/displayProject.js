@@ -1,5 +1,11 @@
-import { content } from "./index.js";
+import { content, projects } from "./index.js";
+const projectsInMenu=document.querySelector('.projects');
+const menu=document.querySelector('.menu');
 function display(project){
+    const oldDivs= document.querySelectorAll('.content .task');
+            oldDivs.forEach((oldDiv) => {
+                content.removeChild(oldDiv);
+            });
     project.list.forEach(task=> {
             const div=document.createElement('div');
             div.classList.add('task');
@@ -12,5 +18,20 @@ function display(project){
             
         });
 }
+function updateMenu(){
+    const oldProjects= document.querySelectorAll('.userAddedProject');
+            oldProjects.forEach((oldProject) => {
+                menu.removeChild(oldProject);
+            });
+    projects.forEach((project)=>{
+        const div=document.createElement('div');
+        const h=document.createElement('h4');
+        div.classList.add('menuContent');
+        div.classList.add('userAddedProject')
+        div.appendChild(h);
+        h.textContent=project.name;
+        projectsInMenu.insertAdjacentElement('afterend', div);
+    } );
+}
 
-export {display};
+export {display,updateMenu};

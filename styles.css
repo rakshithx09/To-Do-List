@@ -5,6 +5,7 @@
   --fontColor: #FAF0E6;
   --highlight: #567787;
   --task:#567787;
+  --hover:#43606e;
   }
   :root {
     --content: #3b4e64;
@@ -13,6 +14,7 @@
     --highlight: #97b6f0;
     --fontColor: #FAF0E6;
     --task:#5a7099;
+    --hover:#516386;
   }
   * {
     margin: 0;
@@ -32,6 +34,7 @@
     padding: 0 12.5%;
     width: 100vw;
     height: 4.5rem;
+    z-index: 50;
   }
   .nav >div {
     margin-right: auto;
@@ -68,8 +71,7 @@
     background-color: rgb(0, 0, 0);
   }
   .body{
-    width: 100%;/* 
-    height: calc(100vh - 4.5rem); */
+    width: 100%;
     min-height:calc(100vh - 4.5rem) ;
     margin-top: 4.5rem;
     background-color: var(--content);
@@ -98,6 +100,9 @@
     width: min(100%,210px);
     padding: 1rem;
   }
+  .menuContent:hover{
+    background-color: var(--hover);
+  }
   .menuSection{
     border-bottom: 3px solid var(--highlight);
     display: flex;
@@ -116,13 +121,38 @@
     gap: 1rem;
     align-items: center;
   }
-  .projects{
-    grid-row: 6;
+  .addTask {
+    height: 13vh;/* 
+    margin-top: 4rem; */
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 4rem;/* 
+    background-color: var(--menu); */
   }
-  .addProject{
-    grid-row: 7;
+  
+  .addBtn {
+    /* width: 10vmax; */
+    height: 8vh;
+    margin: auto;
+    display: flex;
+    padding: 0 14px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--menu);
+    font-size: 22px;
+    border-radius: 25px;
+    transition: height 0.2s ease;
+    transition: width 0.2s ease;
   }
-
+  
+  .addBtn:hover {
+    background-color: var(--hover);
+    /* width: 10.3vmax; */
+    padding: 0 17px;
+    height: 8.5vh;
+    cursor: pointer;
+  }
   .task{
     border-radius: 15px;
     width: 90%;
@@ -146,6 +176,82 @@
     width: 1.2rem;
     border-radius: 30px;
   }
+  
+  .prompt {
+    z-index: 50;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: display 0.2s ease;
+  }
+  
+  .taskDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    background-color: var(--menu);
+    border-radius: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .taskDetails >input {
+    border-radius: 13px;
+    padding: 8px 5px;
+    color: #000000;
+    font-size: 15px;
+    width: 20vw;
+    margin-bottom: 10px;
+  }
+  
+  .taskDetails div{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    align-items: center;
+    transition: width 0.2s ease;
+    transition: height 0.2s ease;
+  }
+  .taskDetails > div > label{
+  margin-right: auto;
+  }
+  .taskDetails > div > input{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  #crossIcon{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 200;
+    color: var(--highlight);
+    font-size: 25px;
+    cursor: pointer;
+  }
+  .taskDetails >div:last-of-type{
+   /*  border: 2px solid white; */
+    width: 50%;
+    background-color: var(--content);
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .taskDetails >div:last-of-type:hover{
+    width: 50.5%;
+    height: 3.1rem;
+    background-color: var(--hover);
+    cursor: pointer;
+  
+   }
 
   @media only screen and (max-width:650px){
     .body{
@@ -157,5 +263,22 @@
     }
     .content{
       width: 100%;
+    }
+  }
+  @media only screen and (max-width:900px) {
+    
+    .taskDetails input {
+      
+      width: 40vw;
+      
+    }
+  }
+  
+  @media only screen and (max-width:500px) {
+    
+    .taskDetails input {
+      
+      width: 60vw;
+      
     }
   }

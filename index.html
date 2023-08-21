@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="dist/main.js" defer></script>
 </head>
 
@@ -50,14 +51,54 @@
 
         </div>
         <div class="content">
-            <div class="task">
-                <input type="checkbox">
-                <div class="taskName">Gym</div>
-                <div class="dueDate">1717171</div>
-                <div class="favoriteBtn">hh</div>
-                <div class="editIcon">...</div>
+            <div class="addTask" id="addTask">
+                <div class="addBtn" id="addBtn">
+                    <h4>+Add Task</h4>
+                </div>
             </div>
         </div>
+        <div class="prompt" id="taskPrompt">
+            <div class="taskDetails" id="taskDetails">
+                <i class="fa fa-close" id="crossIcon"></i>
+                <label for="description">
+                    <h2>Description</h2>
+                </label>
+                <input type="text" id="description" value="benchpress 150kgs">
+
+                <label for="duedate">
+                    <h2>Due Date</h2>
+                </label>
+                <input type="date" id="duedate" value="">
+
+                <div>
+                    <label for="impCheckBox">
+                        <h2>Is it important?</h2>
+                    </label>
+                    <input type="checkbox" id="impCheckBox">
+                </div>
+
+                <div class="submit" id="submit">
+                    <h3>Add Task</h3>
+                </div>
+            </div>
+
+        </div>
+        <div class="prompt" id="projectPrompt">
+            <div class="taskDetails projectDetails" id="projectDetails">
+                <i class="fa fa-close" id="crossIcon"></i>
+
+                <label for="projectDescription">
+                    <h2>Project Description</h2>
+                </label>
+                <input type="text" id="projectDescription" value="invade pakistan">
+
+                <div class="submit" id="submitProject">
+                    <h3>Add Project</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
     </div>
 </body>
 

@@ -1,6 +1,7 @@
-//import { web } from "webpack";
-import {projectCreate, createTask} from "./createNew.js";
-import  {display}  from "./displayProject.js";
+import { projectCreate, createTask } from "./createNew.js";
+import { display,updateMenu } from "./displayProject.js";
+import { displayTaskPrompt, closeTaskPrompt, close ,closeProjectPrompt,displayProjectPrompt} from "./prompt.js";
+import { taskData, projectData} from "./retrieveData.js";
 
 const switchBtn = document.querySelector('.switch');
 const toggle = document.getElementById('toggle');
@@ -13,30 +14,49 @@ toggle.addEventListener('click', () => {
 });
 
 
-const content=document.querySelector('.content');
-
-const projects = new Array();
-
-
-const all=new projectCreate("all",0);
-const webDev=new projectCreate("webDev",1);
+const content = document.querySelector('.content');
+const allProjectsBtn = document.querySelector('.all');
+const addedProjectsBtn = document.querySelector('.addProject');
+const projectSection = document.querySelector('.projects');
 
 
-webDev.list.push(new createTask("gym",false,"today","high"));
-webDev.list.push(new createTask("college",false,"today","high"));
-all.list.push(new createTask("gym",false,"today","high"));
-all.list.push(new createTask("college",false,"today","high"));;
-all.list.push(new createTask("gym",false,"today","high"));
-all.list.push(new createTask("college",false,"today","high"));;
-all.list.push(new createTask("gym",false,"today","high"));
-all.list.push(new createTask("college",false,"today","high"));;
-all.list.push(new createTask("gym",false,"today","high"));
-all.list.push(new createTask("trip",false,"sept 17","very high"));;
 
-projects.push(all);
-projects.push(webDev);
+
+addedProjectsBtn.addEventListener('click', () => {
+    displayProjectPrompt();
+});
+close.addEventListener('click', () => {
+    closeProjectPrompt();
+});
+
+const all = new projectCreate("all", 0);
+let currentProject = all;
+const submit = document.getElementById('submit');
+const submitProject = document.getElementById('submitProject');
+
+submit.addEventListener('click', () => {
+    taskData(webDev, all); //retrieves data from prompt pushes to respective projects
+    closeTaskPrompt();
+    display(currentProject);
+});
+submitProject.addEventListener('click', () => {
+    projectData(); //retrieves data from prompt pushes to respective projects
+    closeProjectPrompt();
+    display(currentProject);
+    updateMenu();
+});
+
+
+
+const projects = new Array();/* 
+
+
+/* projects.push(all); */
+/* projects.push(webDev); */
 console.log(projects);
+allProjectsBtn.addEventListener('click', () => {
+    currentProject = all;
+    display(all);
+});
 
-display(webDev);
-
-export {content};
+export { content,projects };
