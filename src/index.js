@@ -1,3 +1,4 @@
+//import { web } from "webpack";
 import {projectCreate, createTask} from "./createNew.js";
 import  {display}  from "./displayProject.js";
 
@@ -36,6 +37,6 @@ projects.push(all);
 projects.push(webDev);
 console.log(projects);
 
-display(all);
+display(webDev);
 
 export {content};

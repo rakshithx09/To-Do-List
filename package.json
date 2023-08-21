@@ -1,9 +1,8 @@
 {
   "name": "to-do-list",
-  "mode":"development",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
     "start": "webpack --config webpack.config.js --watch"
   },
@@ -13,5 +12,8 @@
   "devDependencies": {
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "node-polyfill-webpack-plugin": "^2.0.1"
   }
 }
