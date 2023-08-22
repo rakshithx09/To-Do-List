@@ -1,5 +1,7 @@
-import { content, projects } from "./index.js";
+import { content, projects,currentProject} from "./index.js";
 const projectsInMenu=document.querySelector('.projects');
+
+
 const menu=document.querySelector('.menu');
 function display(project){
     const oldDivs= document.querySelectorAll('.content .task');
@@ -27,7 +29,13 @@ function updateMenu(){
         const div=document.createElement('div');
         const h=document.createElement('h4');
         div.classList.add('menuContent');
-        div.classList.add('userAddedProject')
+        div.classList.add('userAddedProject');
+        div.dataset.index=project.index;
+        div.addEventListener('click',()=>{
+            display(projects[div.dataset.index]);
+            /* currentProject.value=projects[div.dataset.index]; */
+            console.log(projects[div.dataset.index]);
+        });
         div.appendChild(h);
         h.textContent=project.name;
         projectsInMenu.insertAdjacentElement('afterend', div);
@@ -35,3 +43,6 @@ function updateMenu(){
 }
 
 export {display,updateMenu};
+
+
+

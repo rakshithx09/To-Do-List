@@ -103,6 +103,12 @@
   .menuContent:hover{
     background-color: var(--hover);
   }
+
+  .addProject{
+    display: flex;
+    justify-content: center;
+    width: min(100%,140px);
+  }
   .menuSection{
     border-bottom: 3px solid var(--highlight);
     display: flex;
@@ -227,7 +233,7 @@
     height: 25px;
     cursor: pointer;
   }
-  .close{
+  i.close{
     position: absolute;
     top: 1rem;
     right: 1.5rem;

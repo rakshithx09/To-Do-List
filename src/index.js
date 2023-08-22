@@ -1,5 +1,5 @@
-import { projectCreate, createTask } from "./createNew.js";
-import { display,updateMenu } from "./displayProject.js";
+import { projectCreate } from "./createNew.js";
+import { display,updateMenu} from "./displayProject.js";
 import { displayTaskPrompt, closeTaskPrompt, closeTaskIcon,closeProjectIcon ,closeProjectPrompt,displayProjectPrompt} from "./prompt.js";
 import { taskData, projectData} from "./retrieveData.js";
 
@@ -15,9 +15,13 @@ toggle.addEventListener('click', () => {
 
 
 const content = document.querySelector('.content');
-const allProjectsBtn = document.querySelector('.all');
 const addedProjectsBtn = document.querySelector('.addProject');
 const addTaskBtn = document.getElementById('addTaskBtn');
+
+const all = new projectCreate("all", 0);
+let currentProject = all;
+
+const projects = new Array();
 
 
 addTaskBtn.addEventListener('click', () => {
@@ -36,34 +40,41 @@ closeProjectIcon.addEventListener('click', () => {
     closeProjectPrompt();
 });
 
-const all = new projectCreate("all", 0);
-let currentProject = all;
+
 const submit = document.getElementById('submit');
 const submitProject = document.getElementById('submitProject');
 
 submit.addEventListener('click', () => {
-    taskData(projects[0], all); //retrieves data from prompt pushes to respective projects
+    taskData(currentProject, all); //retrieves data from prompt pushes to respective projects
     closeTaskPrompt();
-    display(currentProject);
+    console.log(all);
+    /* display(currentProject); */
 });
 submitProject.addEventListener('click', () => {
     projectData(); //retrieves data from prompt pushes to respective projects
     closeProjectPrompt();
-    display(currentProject);
+    /* display(currentProject); */
     updateMenu();
+   
+});
+
+
+const userAddedProjects=document.querySelectorAll('.userAddedProject');
+
+userAddedProjects.forEach((userAddedProject)=>{
+    userAddedProject.addEventListener('click',()=>{
+        console.log(userAddedProject.index);
+    });
 });
 
 
 
-const projects = new Array();/* 
 
-
-/* projects.push(all); */
-/* projects.push(webDev); */
 console.log(projects);
-allProjectsBtn.addEventListener('click', () => {
-    currentProject = all;
-    display(all);
-});
 
-export { content,projects };
+export { content, projects,currentProject };
+
+
+
+
+/* currentproject is not being updated properly */
