@@ -1,5 +1,5 @@
 import { projectCreate } from "./createNew.js";
-import { display,updateMenu, currentProjectDisplay} from "./displayProject.js";
+import { display,updateMenu, currentProjectDisplay,menu} from "./displayProject.js";
 import { displayTaskPrompt, closeTaskPrompt, closeTaskIcon,closeProjectIcon ,closeProjectPrompt,displayProjectPrompt} from "./prompt.js";
 import { taskData, projectData} from "./retrieveData.js";
 
@@ -59,19 +59,21 @@ submitProject.addEventListener('click', () => {
     updateMenu();
    
 });
-
+const burger=document.querySelector('.burger');
+const menuChild=document.querySelector('.menuChild');
+burger.addEventListener('click',()=>{
+     menu.classList.toggle("active"); 
+    
+});
+/* 
 const userAddedProjects=document.querySelectorAll('.userAddedProject');
 
 userAddedProjects.forEach((userAddedProject)=>{
     userAddedProject.addEventListener('click',()=>{
         console.log(userAddedProject.index);
     });
-});
+}); */
 
-
-
-
-console.log(projects);
 
 export { content, projects,currentProject };
 

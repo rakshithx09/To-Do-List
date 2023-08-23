@@ -43,7 +43,7 @@ function updateMenu(){
     } );
 }
 
-export {display,updateMenu,currentProjectDisplay};
+export {display,updateMenu,currentProjectDisplay,menu};
 
 
 
