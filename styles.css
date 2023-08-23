@@ -127,6 +127,13 @@
     gap: 1rem;
     align-items: center;
   }
+
+  .content .currentProject{
+    padding: 5px;
+    padding-right: 2rem;
+    border-bottom: 3px solid var(--highlight);
+    align-self: flex-start;
+  }
   .addTask {
     height: 13vh;/* 
     margin-top: 4rem; */

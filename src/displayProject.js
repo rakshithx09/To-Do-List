@@ -1,6 +1,7 @@
-import { content, projects,currentProject} from "./index.js";
+import { content, projects} from "./index.js";
+import { getCurrentProject } from "./retrieveData.js";
 const projectsInMenu=document.querySelector('.projects');
-
+const currentProjectDisplay=document.querySelector('.currentProject> h2');/* the display div in content box */
 
 const menu=document.querySelector('.menu');
 function display(project){
@@ -8,7 +9,8 @@ function display(project){
             oldDivs.forEach((oldDiv) => {
                 content.removeChild(oldDiv);
             });
-    project.list.forEach(task=> {
+            currentProjectDisplay.textContent=project.name;
+            project.list.forEach(task=> {
             const div=document.createElement('div');
             div.classList.add('task');
             div.innerHTML=`<input type="checkbox">
@@ -33,8 +35,7 @@ function updateMenu(){
         div.dataset.index=project.index;
         div.addEventListener('click',()=>{
             display(projects[div.dataset.index]);
-            /* currentProject.value=projects[div.dataset.index]; */
-            console.log(projects[div.dataset.index]);
+            getCurrentProject(div);
         });
         div.appendChild(h);
         h.textContent=project.name;
@@ -42,7 +43,7 @@ function updateMenu(){
     } );
 }
 
-export {display,updateMenu};
+export {display,updateMenu,currentProjectDisplay};
 
 
 

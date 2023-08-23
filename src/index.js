@@ -1,5 +1,5 @@
 import { projectCreate } from "./createNew.js";
-import { display,updateMenu} from "./displayProject.js";
+import { display,updateMenu, currentProjectDisplay} from "./displayProject.js";
 import { displayTaskPrompt, closeTaskPrompt, closeTaskIcon,closeProjectIcon ,closeProjectPrompt,displayProjectPrompt} from "./prompt.js";
 import { taskData, projectData} from "./retrieveData.js";
 
@@ -20,6 +20,11 @@ const addTaskBtn = document.getElementById('addTaskBtn');
 
 const all = new projectCreate("all", 0);
 let currentProject = all;
+const allBtn=document.querySelector('.all');
+allBtn.addEventListener('click',()=>{
+    currentProjectDisplay.textContent="All";
+    display(all);
+});
 
 const projects = new Array();
 
@@ -28,7 +33,6 @@ addTaskBtn.addEventListener('click', () => {
     displayTaskPrompt();
 });
 closeTaskIcon.addEventListener('click', () => {
-    taskData(projects[0],all)
     closeTaskPrompt();
 });
 
@@ -45,19 +49,16 @@ const submit = document.getElementById('submit');
 const submitProject = document.getElementById('submitProject');
 
 submit.addEventListener('click', () => {
-    taskData(currentProject, all); //retrieves data from prompt pushes to respective projects
+    taskData(all); //retrieves data from prompt pushes to respective projects
     closeTaskPrompt();
     console.log(all);
-    /* display(currentProject); */
 });
 submitProject.addEventListener('click', () => {
     projectData(); //retrieves data from prompt pushes to respective projects
     closeProjectPrompt();
-    /* display(currentProject); */
     updateMenu();
    
 });
-
 
 const userAddedProjects=document.querySelectorAll('.userAddedProject');
 
@@ -76,5 +77,3 @@ export { content, projects,currentProject };
 
 
 
-
-/* currentproject is not being updated properly */
