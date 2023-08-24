@@ -92,18 +92,7 @@
     flex-direction: crow;
 
   }
-  .menu{
-    /* padding: 1.5rem;
-    width: min(27%,300px);
-    background-color: var(--menu);
-    display: grid;
-    grid-template-rows: repeat(6,50px);
-    grid-template-columns: 1fr;
-    grid-auto-rows: 50px;
-    justify-content: center;
-    justify-items: center;
-    gap: 13px; */
-
+  .menu{ 
     padding: 1.5rem;
     width: min(27%,300px);
     background-color: var(--menu);
@@ -128,6 +117,10 @@
     padding: 1rem;
   }
   .menuContent:hover{
+    background-color: var(--hover);
+  }
+
+  .menuContentClicked{
     background-color: var(--hover);
   }
 
@@ -162,17 +155,14 @@
     align-self: flex-start;
   }
   .addTask {
-    height: 13vh;/* 
-    margin-top: 4rem; */
+    height: 13vh;
     display: flex;
     align-items: center;
     position: sticky;
-    top: 4rem;/* 
-    background-color: var(--menu); */
+    top: 4rem;
   }
   
   .addBtn {
-    /* width: 10vmax; */
     height: 8vh;
     margin: auto;
     display: flex;
@@ -188,7 +178,6 @@
   
   .addBtn:hover {
     background-color: var(--hover);
-    /* width: 10.3vmax; */
     padding: 0 17px;
     height: 8.5vh;
     cursor: pointer;
@@ -207,6 +196,28 @@
   .task > div{
     padding: 5px;
     height: 2rem;
+  }
+  .task .editIcon{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dueDate{
+    padding: 1rem;
+  }
+  .fa-star{
+    cursor: pointer;
+  }
+  .fas{
+    color: rgb(255 179 22);
+
+  }
+  .task .editIconDots{
+    width: 4px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 3px solid var(--highlight);
   }
   .taskName{
     flex-grow: 1;
@@ -312,6 +323,12 @@
   }
   @media only screen and (max-width:900px) {
     
+    .content{
+      padding: 1rem;
+    }
+    .task{
+      width: 95%;
+    }
     .taskDetails input {
       
       width: 40vw;

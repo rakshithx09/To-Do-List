@@ -12,11 +12,16 @@ function getCurrentProject(div){
     currentProjectIndex=div.dataset.index;
 }
 function taskData(all){
-    if(currentProjectIndex!=null){
+   all.list.push(new createTask(descriptionInput.value,false, duedateInput.value, impInput.checked));
+     if(currentProjectIndex!=null){
         projects[currentProjectIndex].list.push(new createTask(descriptionInput.value,false, duedateInput.value, impInput.checked));
+        display(projects[currentProjectIndex]);
     }
-    display(projects[currentProjectIndex]);
-    all.list.push(projects[currentProjectIndex].list[projects[currentProjectIndex].list.length-1]);
+    else{
+        console.log("hey");
+        display(all);
+    }
+    
 }
 function projectData(){
     projects.push(new projectCreate(projectDescription.value,i));
