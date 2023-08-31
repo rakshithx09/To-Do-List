@@ -1,12 +1,14 @@
 import { projectCreate } from "./createNew.js";
 import { display, updateMenu, currentProjectDisplay, menu } from "./displayProject.js";
 import { displayTaskPrompt, closeTaskPrompt, closeTaskIcon, closeProjectIcon, closeProjectPrompt, displayProjectPrompt } from "./prompt.js";
-import { taskData, projectData } from "./retrieveData.js";
+import { taskData, projectData, setSpecialProject } from "./retrieveData.js";
 
 const switchBtn = document.querySelector('.switch');
 const toggle = document.getElementById('toggle');
 const root = document.documentElement;
 
+const all = new projectCreate("all", 0);
+const allBtn = document.querySelector('.all');
 
 toggle.addEventListener('click', () => {
     switchBtn.classList.toggle('darkMode');
@@ -18,11 +20,12 @@ const content = document.querySelector('.content');
 const addedProjectsBtn = document.querySelector('.addProject');
 const addTaskBtn = document.getElementById('addTaskBtn');
 
-const all = new projectCreate("all", 0);
-const allBtn = document.querySelector('.all');
+
 allBtn.addEventListener('click', () => {
     display(all);
     currentProjectDisplay.textContent = "All";
+    setSpecialProject();
+    console.log(all);
 });
 
 const projects = new Array();
@@ -77,7 +80,7 @@ dueDateAndProjects.forEach((dueDateAndProject)=>{
 });
 
 
-export { content, projects };
+export { content, projects ,allBtn, all};
 
 
 

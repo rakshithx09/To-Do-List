@@ -1,10 +1,13 @@
 import { content, projects} from "./index.js";
 import { getCurrentProject } from "./retrieveData.js";
+import { editPriority } from "./edit.js";
 const projectsInMenu=document.querySelector('.projects');
 const currentProjectDisplay=document.querySelector('.currentProject> h2');/* the display div in content box */
 
+
 const menu=document.querySelector('.menu');
 function display(project){
+    let taskIndex=0; /* data- an index given to each task to get its index in the project array */
     const oldDivs= document.querySelectorAll('.content .task');
             oldDivs.forEach((oldDiv) => {
                 content.removeChild(oldDiv);
@@ -15,7 +18,7 @@ function display(project){
             div.innerHTML=`<input type="checkbox">
             <div class="taskName"><h4>${task.name}</h4></div>
             <div class="dueDate">${task.duedate}</div>
-            <div class="favoriteBtn"><i class="far fa-star"></i></div>
+            <div class="favoriteBtn"><i class="far fa-star" data-index=${taskIndex}></i></div>
             <div class="editIcon"><div class="editIconDots"></div><div class="editIconDots"></div><div class="editIconDots"></div></div>`
             content.appendChild(div);
             const starIcon=div.querySelector('.favoriteBtn i');
@@ -23,11 +26,12 @@ function display(project){
                 starIcon.classList.add("fas");
                 starIcon.classList.remove("far");
             }
-            starIcon.addEventListener('click',()=>{
-                console.log("hey");
+            starIcon.addEventListener('click',(e)=>{
+                editPriority(projects[currentProjectDisplay.dataset.projectIndex],e.target.dataset.index);
                 starIcon.classList.toggle("fas");
                 starIcon.classList.toggle("far");
-            });            
+            });   
+            taskIndex++;        
         });
 }
 function updateMenu(){
@@ -44,7 +48,8 @@ function updateMenu(){
         div.addEventListener('click',()=>{
             display(projects[div.dataset.index]);
             getCurrentProject(div);
-            currentProjectDisplay.textContent=project.name;  /* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh added new line */
+            currentProjectDisplay.textContent=project.name;
+            currentProjectDisplay.dataset.projectIndex=div.dataset.index;
         });
         div.appendChild(h);
         h.textContent=project.name;

@@ -1,31 +1,39 @@
 import { createTask, projectCreate } from "./createNew";
-import { projects } from "./index.js";
+import { projects ,allBtn} from "./index.js";
 import { display } from "./displayProject";
 const descriptionInput = document.getElementById('description');
 const duedateInput = document.getElementById('duedate');
 const impInput = document.getElementById('impCheckBox');
 const projectDescription=document.getElementById('projectDescription');
-let i=0;
-
+let i=0; /* for projects */
 let currentProjectIndex=null;
+
+let totalNumberOfTasks = 0;
+
+function setSpecialProject(){
+    currentProjectIndex=null;
+}
+
+
 function getCurrentProject(div){
     currentProjectIndex=div.dataset.index;
 }
 function taskData(all){
-   all.list.push(new createTask(descriptionInput.value,false, duedateInput.value, impInput.checked));
+   all.list.push(new createTask(descriptionInput.value,false, duedateInput.value, impInput.checked,totalNumberOfTasks));
+   
      if(currentProjectIndex!=null){
-        projects[currentProjectIndex].list.push(new createTask(descriptionInput.value,false, duedateInput.value, impInput.checked));
-        display(projects[currentProjectIndex]);
+        projects[currentProjectIndex].list.push(new createTask(descriptionInput.value,false, duedateInput.value, impInput.checked,totalNumberOfTasks));
+        display(projects[currentProjectIndex]);   
     }
+    
     else{
-        console.log("hey");
         display(all);
     }
+    totalNumberOfTasks++;
     
 }
 function projectData(){
-    projects.push(new projectCreate(projectDescription.value,i));
-    console.log(projects[projects.length-1]);   
+    projects.push(new projectCreate(projectDescription.value,i));  
     i++;
 }
-export {taskData,projectData,getCurrentProject};
+export {taskData,projectData,getCurrentProject, setSpecialProject};
