@@ -7,7 +7,7 @@ const switchBtn = document.querySelector('.switch');
 const toggle = document.getElementById('toggle');
 const root = document.documentElement;
 
-const all = new projectCreate("all", 0);
+const all = new projectCreate("all", 0); /* its just given an index 0, but its not in any array */
 const allBtn = document.querySelector('.all');
 
 toggle.addEventListener('click', () => {
@@ -20,15 +20,17 @@ const content = document.querySelector('.content');
 const addedProjectsBtn = document.querySelector('.addProject');
 const addTaskBtn = document.getElementById('addTaskBtn');
 
+const projects = new Array();
+projects[0]=all;  /* edited today */
 
 allBtn.addEventListener('click', () => {
-    display(all);
+    projects.forEach((project)=>{
+        display(project);
+    });
     currentProjectDisplay.textContent = "All";
     setSpecialProject();
-    console.log(all);
+    console.log(projects);
 });
-
-const projects = new Array();
 
 
 addTaskBtn.addEventListener('click', () => {

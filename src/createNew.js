@@ -9,6 +9,7 @@ function createTask(name, checked, duedate, priority,index){
     this.duedate=duedate;
     this.priority=priority;
     this.index=index;
+    
 }
 
 export {projectCreate, createTask};
