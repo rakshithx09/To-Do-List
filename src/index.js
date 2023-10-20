@@ -1,5 +1,5 @@
 import { projectCreate } from "./createNew.js";
-import { display, updateMenu, currentProjectDisplay, menu } from "./displayProject.js";
+import { display, updateMenu, currentProjectDisplay, menu, removeTasks } from "./displayProject.js";
 import { displayTaskPrompt, closeTaskPrompt, closeTaskIcon, closeProjectIcon, closeProjectPrompt, displayProjectPrompt } from "./prompt.js";
 import { taskData, projectData, setSpecialProject } from "./retrieveData.js";
 
@@ -7,7 +7,7 @@ const switchBtn = document.querySelector('.switch');
 const toggle = document.getElementById('toggle');
 const root = document.documentElement;
 
-const all = new projectCreate("all", 0); /* its just given an index 0, but its not in any array */
+const all = new projectCreate("all", 0); 
 const allBtn = document.querySelector('.all');
 
 toggle.addEventListener('click', () => {
@@ -24,12 +24,16 @@ const projects = new Array();
 projects[0]=all;  /* edited today */
 
 allBtn.addEventListener('click', () => {
+    /* console.log("all");
+    console.log(all); */
+    removeTasks();
     projects.forEach((project)=>{
         display(project);
     });
     currentProjectDisplay.textContent = "All";
     setSpecialProject();
-    console.log(projects);
+    /* console.log("parray");
+    console.log(projects); */
 });
 
 

@@ -1,20 +1,33 @@
-:root.dark {
-  --menu: #2b3b42;
-  --content: #364952;
-  --nav: #1d2c38;
-  --fontColor: #FAF0E6;
-  --highlight: #567787;
-  --task:#567787;
-  --hover:#43606e;
-  }
-  :root {
-    --content: #3b4e64;
-    --nav: #252B48;
-    --menu: #2c3955;
+
+
+  /* :root.dark {
+    --menu: #2b3b42;
+    --content: #364952;
+    --nav: #1d2c38;
+    --fontColor: #FAF0E6;
+    --highlight: #567787;
+    --task:#567787;
+    --hover:#43606e;
+    } */
+    :root {
+      --content: #314265;
+      --nav: #252B48;
+      --menu: #2c3955;
+      --highlight: #97b6f0;
+      --fontColor: #FAF0E6;
+      --task:#485a7d;
+      --hover:#516386;
+      --btn :#415377;
+    }
+  :root.dark {
+    --content: 	#2c2f35;
+    --nav: #1e2022;
+    --menu: #23272b;
     --highlight: #97b6f0;
     --fontColor: #FAF0E6;
-    --task:#5a7099;
+    --task:#40495c;
     --hover:#516386;
+    --btn :#353940;
   }
   * {
     margin: 0;
@@ -89,7 +102,7 @@
     margin-top: 4.5rem;
     background-color: var(--content);
     display: flex;
-    flex-direction: crow;
+    flex-direction: row;
 
   }
   .menu{ 
@@ -107,9 +120,16 @@
   body  .active.menu{
     display: grid !important;
   }
+  a{
+    text-decoration: none;
+    width: min(100%,210px);
+  }
+  /* a .menuContent.about{
+    width: min(100%,210px);
+  } */
   .menuContent{
     border-radius: 13px;
-    background-color: var(--content);
+    background-color: var(--btn);
     display: flex;
     align-items: center;/* 
     border: 2px solid black; */
@@ -192,6 +212,7 @@
     align-items: center;
     padding: 1rem;
     gap: 0.9rem;
+    
   }
   .task > div{
     padding: 5px;
@@ -202,6 +223,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
   }
   .dueDate{
     padding: 1rem;
@@ -215,7 +237,7 @@
   }
   .task .editIconDots{
     width: 4px;
-    margin: 2px;
+    margin: 1.2px;
     border-radius: 10px;
     border: 3px solid var(--highlight);
   }
@@ -226,6 +248,27 @@
     height: 1.2rem;
     width: 1.2rem;
     border-radius: 30px;
+  }
+
+  .popUp{
+    display: none;
+    padding: 2px;
+    border-radius: 13px;
+    position: absolute;
+    background-color: var(--menu);
+    right: 5px;
+    bottom: -80px;
+    
+  }
+  .task .popUp.popUpActive{
+    display: block;
+  }
+  .popUpItems{
+    border-radius: 11px;
+    padding: 10px 15px;
+  }
+  .popUpItems:hover{
+   background-color: var(--hover);
   }
   
   .prompt {
